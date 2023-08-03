@@ -16,7 +16,7 @@ use Cake\Collection\CollectionInterface;
 $this->assign('title', __("Heavens Best Training Videos"));
 $this->Html->script('build/site.bundle.js?v=1.0.0a', ['block' => true]);
 ?>
-<h2><?= __("Heaven's Best Training Videos." )?></h2>
+<h2><?= __("Heaven's Best Training Videossssss." )?></h2>
 <p class="lead"><?= __('Click on videos to watch.') ?></p>
 <div class="row">
 <?php foreach ($videos as $video): ?>
