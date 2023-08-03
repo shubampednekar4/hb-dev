@@ -1,0 +1,16 @@
+/**
+ * Authentication Styles
+ */
+.login-box {
+  width: 500px;
+  margin: auto;
+  max-width: 100%;
+
+  .login-logo {
+    width: 100px;
+  }
+
+  label, legend {
+    margin-bottom: 0;
+  }
+}

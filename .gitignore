@@ -1,0 +1,32 @@
+# CakePHP Specific Directories
+.wellknown/
+asset/
+bin/
+cgi-bin/
+config/
+git/
+logs/
+
+resources/
+tempates/
+tests/
+tmp/
+vendor/
+index.php
+phpunit.xml.dist.bak
+phpunit.xml.dist
+CHANGELOG.md
+
+# CakePHP Specific Files
+error_log
+id_rsa
+
+
+# Other Files
+/.htaccess
+CHANGELOG.MD
+/package-lock.json
+/package.json
+/phpcs.xml
+/README.md
+/webpack.config.js

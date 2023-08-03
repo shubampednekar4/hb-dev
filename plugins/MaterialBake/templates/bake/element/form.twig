@@ -1,0 +1,109 @@
+{#
+/**
+ * CakePHP(tm) : Rapid Development Framework (http://cakephp.org)
+ * Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
+ *
+ * Licensed under The MIT License
+ * For full copyright and license information, please see the LICENSE.txt
+ * Redistributions of files must retain the above copyright notice.
+ *
+ * @copyright     Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
+ * @link          http://cakephp.org CakePHP(tm) Project
+ * @since         2.0.0
+ * @license       http://www.opensource.org/licenses/mit-license.php MIT License
+ */
+#}
+{% set pk = '$' ~ singularVar ~ '->' ~ primaryKey[0] %}
+{% set fields = Bake.filterFields(fields, schema, modelObject) %}
+{% if 'add' not in action %}
+<?= $this->Html->link('<i class="fas fa-backward"></i> Go Back', ['action' => 'view', ${{ singularVar }}->{{ primaryKey[0] }}], [
+    'escape' => false,
+    'class' => 'btn btn-sm btn-default'
+]) ?>
+<?= $this->Html->link(__('<i class="fas fa-list-ul"></i> All {{ pluralHumanName }}'), ['action' => 'index'], [
+    'escape' => false,
+    'class' => 'btn btn-sm btn-primary',
+]) ?>
+<?= $this->Form->postLink('<i class="fas fa-trash"></i> Delete {{ singularVar|underscore|humanize }}', ['action' => 'delete', ${{ singularVar }}->{{ primaryKey[0] }}], [
+    'escape' => false,
+    'class' => 'btn btn-sm btn-danger',
+    'confirm' => 'Are you sure you want to delete this {{ singularVar|underscore|humanize }}?'
+]) ?>
+{% else %}
+<?= $this->Html->link('<i class="fas fa-backward"></i> Go Back', ['action' => 'index', ${{ singularVar }}->{{ primaryKey[0] }}], [
+'escape' => false,
+'class' => 'btn btn-sm btn-default'
+]) ?>
+{% endif %}
+{%- set done = [] %}
+<div class="card">
+    <header class="card-header card-header-primary">
+        <h2 class="card-title"><i class="fas fa-edit"></i> <?= __($this->fetch('title')) ?></h2>
+    {% if 'add' not in action %}
+        <p class="card-category">Alter {{ singularVar|underscore|humanize }} Info</p>
+    {% else %}
+        <p class="card-category">Add New {{ singularVar|underscore|humanize }} To The System</p>
+    {% endif %}
+    </header>
+    {{ '\n' }}
+    <section class="card-body">
+        <?= $this->Form->create(${{ singularVar }}, ['autofill' => 'off']) ?>
+    {% for field in fields %}
+    {%- if field not in primaryKey %}
+    {%- if keyFields[field] is defined %}
+    {%- set fieldData = Bake.columnData(field, schema) %}
+    {%- if fieldData.null %}
+        <div class="form-group">
+            <?= $this->Form->control('{{ field }}', [
+                'options' => ${{ keyFields[field] }},
+                'empty' => true,
+                'class' => 'form-control',
+            ]); ?>
+        </div>
+        {{ '\n' }}
+    {%- else %}
+        <div class="form-group">
+            <?= $this->Form->control('{{ field }}', [
+                'options' => ${{ keyFields[field] }},
+                'class' => 'form-control',
+            ]); ?>
+        </div>
+        {{ '\n' }}
+    {%- endif %}
+    {%- elseif field not in ['created', 'modified', 'updated', 'time_created', 'time_updated'] %}
+    {%- set fieldData = Bake.columnData(field, schema) %}
+    {%- if fieldData.type in ['date', 'datetime', 'time'] and fieldData.null %}
+        <div class="form-group">
+            <?= $this->Form->control('{{ field }}', [
+                'empty' => true,
+                'class' => 'form-control',
+            ]); ?>
+        </div>
+        {{ '\n' }}
+    {%- else %}
+        <div class="form-group">
+            <?= $this->Form->control('{{ field }}', [
+                'class' => 'form-control',
+            ]); ?>
+        </div>
+        {{ '\n' }}
+    {%- endif %}
+    {%- endif %}
+    {%- endif %}
+    {%- endfor %}
+
+    {%- if associations.BelongsToMany is defined %}
+    {%- for assocName, assocData in associations.BelongsToMany %}
+        <div class="form-group">
+            <?= $this->Form->control('{{ assocData.property }}._ids', [
+                'options' => ${{ assocData.variable }},
+                'class' => 'form-control',
+            ]); ?>
+        </div>
+        {{ '/n' }}
+    {%- endfor %}
+    {% endif %}
+        <?= $this->Form->button(__('Submit'), ['class' => 'btn btn-success']) ?>
+        <?= $this->Form->end() ?>
+    </section>
+</div>

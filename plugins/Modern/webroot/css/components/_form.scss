@@ -1,0 +1,27 @@
+.error-message {
+  @extend .invalid-feedback;
+}
+
+.required label:after {
+  content: '\f069';
+  font-family: 'FontAwesome', sans-serif;
+  color: $danger;
+  margin-left: 0.25rem;
+  vertical-align: super;
+  font-size: 0.4rem;
+}
+
+.select2 {
+  margin-top: 0.5rem;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}

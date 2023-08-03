@@ -1,0 +1,45 @@
+/**
+ * Message and alert styles
+ */
+.message {
+  @extend .alert;
+  @extend .alert-dismissible;
+  @extend .fade;
+  @extend .show;
+
+  &.secondary {
+    @extend .alert-secondary;
+  }
+
+  &.primary {
+    @extend .alert-primary;
+  }
+
+  &.light {
+    @extend .alert-light;
+  }
+
+  &.dark {
+    @extend .alert-dark;
+  }
+
+  &.info {
+    @extend .alert-info;
+  }
+
+  &.error {
+    @extend .alert-danger;
+  }
+
+  &.warning {
+    @extend .alert-warning;
+  }
+
+  &.success {
+    @extend .alert-success;
+  }
+
+  &.hidden {
+    display: none;
+  }
+}
