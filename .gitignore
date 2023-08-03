@@ -16,6 +16,7 @@ index.php
 phpunit.xml.dist.bak
 phpunit.xml.dist
 CHANGELOG.md
+deployment-script.sh
 
 # CakePHP Specific Files
 error_log
