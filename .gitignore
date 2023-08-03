@@ -17,6 +17,7 @@ phpunit.xml.dist.bak
 phpunit.xml.dist
 CHANGELOG.md
 deployment-script.sh
+webhook-reciever.php
 
 # CakePHP Specific Files
 error_log
