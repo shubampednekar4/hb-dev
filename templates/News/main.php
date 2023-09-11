@@ -24,14 +24,7 @@ $this->Html->script('build/site.bundle.js?v=1.0.0a', ['block' => true]);
     
         <div class="col-lg-6 col-md-12">
             <div class="card">
-                <div class="card-header card-header-image">
-                <?= $this->Html->link(
-                        $this->Html->image($newsletter->newsletter_location, ['pathPrefix' => '/webroot/newsletter/uploads/', 'alt' => $newsletter->title]),
-                        ['action' => 'view', $newsletter->newsletter_id],
-                        ['escapeTitle' => false]
-                    ) ?>
-                    <h3 class="card-title"><?= h($newsletter->title) ?></h3>
-                </div>
+                 <h3 class="card-title"><?= h($newsletter->title) ?></h3>
                 <div class="card-body">
                     <p class="card-text"><?= h($newsletter->description) ?></p>
                     <?= $this->Html->link(__('Read'), $newsletter->newsletter_location, ['class' => 'btn btn-lg btn-primary', 'target' => '_blank']) ?>
