@@ -1,0 +1,29 @@
+/**
+ * Pagination styles.
+ */
+.pagination {
+  li {
+    @extend .page-item;
+
+    &.active {
+      @extend .active;
+    }
+
+    a {
+      @extend .page-link;
+    }
+  }
+}
+
+.asc:after {
+  content: "arrow_drop_up";
+}
+
+.desc:after {
+  content: "arrow_drop_down";
+}
+
+.asc:after, .desc:after {
+  font-family: 'Material Icons', sans-serif;
+  margin-left: 0.25rem;
+}

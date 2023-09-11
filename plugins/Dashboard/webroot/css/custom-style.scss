@@ -1,0 +1,19 @@
+.sidebar[data-background-color="black"] {
+  background-color: #479de1;
+}
+
+
+.sidebar .nav p {
+  font-size: 1.3rem;
+}
+
+.navbar .notification.bell-notification {
+  right: inherit;
+  left: 20px;
+  text-align: center;
+}
+
+.main-panel > .content {
+  margin-top: 30px;
+  min-height: calc(100vh - 93px);
+}

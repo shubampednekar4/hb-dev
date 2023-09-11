@@ -1,0 +1,19 @@
+/**
+ * Global Styles
+ */
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&family=Roboto+Slab:wght@100;200;300;400;500;600;700;800;900&display=swap');
+body {
+  background-color: $paper;
+  font-family: 'Open Sans', sans-serif;
+  color: $darkShade;
+}
+
+.main {
+  padding-top: 3rem;
+  background: $paper;
+}
+
+.title, .card-title, .info-title, .footer-brand, .footer-big h5, .footer-big h4, .media .media-heading {
+  font-family: 'Open Sans', sans-serif;
+}
