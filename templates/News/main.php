@@ -27,7 +27,9 @@ $this->Html->script('build/site.bundle.js?v=1.0.0a', ['block' => true]);
                  <h3 class="card-title"><?= h($newsletter->title) ?></h3>
                 <div class="card-body">
                     <p class="card-text"><?= h($newsletter->description) ?></p>
+                    
                     <?= $this->Html->link(__('Read'), $newsletter->newsletter_location, ['class' => 'btn btn-lg btn-primary', 'target' => '_blank']) ?>
+                    <p class ="card-text" style="color:grey;font-style:italic;"><?=h($newsletter->created->format('F Y')) ?> </p>
 
                 </div>
             </div>

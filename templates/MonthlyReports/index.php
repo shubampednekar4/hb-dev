@@ -113,6 +113,14 @@ $this->Html->script('https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.3.2/ht
                     
                     function submitForm() {
                         console.log('submitting form');
+                                        // Get the "wrapper" element
+                    var wrapperElement = document.querySelector('.wrapper');
+                
+                    // Set opacity to 0.5
+                    wrapperElement.style.opacity = '0.5';
+                
+                    // Set pointer-events to none
+                    wrapperElement.style.pointerEvents = 'none';
                         document.getElementById('filter-form').submit();
                     }
 
@@ -265,10 +273,10 @@ $this->Html->script('https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.3.2/ht
                     </tr>
                     </thead>
                     <tbody>
+                        
                         <?php
                         $groupedReports = []; // Create an empty array to store the grouped reports
                         $lowerReceiptReports = [];
-
                         // Group the reports by franchise name and keep track of the highest receipt total
                         foreach ($monthlyReports as $monthlyReport) {
                             $franchise = $monthlyReport->franchise->franchise_name;
@@ -277,6 +285,7 @@ $this->Html->script('https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.3.2/ht
                             // If the franchise is already in the grouped reports array, compare receipt totals
                             if (isset($groupedReports[$franchise])) {
                                 if ($receiptTotal > $groupedReports[$franchise]->receipt_total) {
+                                    $lowerReceiptReports[$franchise][] = $groupedReports[$franchise];
                                     $groupedReports[$franchise] = $monthlyReport;
                                 }else{
                                     $lowerReceiptReports[$franchise][] = $monthlyReport;
@@ -288,7 +297,17 @@ $this->Html->script('https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.3.2/ht
                         }
                         
                         ?>
+                        <?php function compareDatesDescending($a, $b) {
+                                return strtotime($b->month) - strtotime($a->month);
+                            }
+                            
+                            // Sort the array using the custom comparison function while maintaining keys
+                            uasort($groupedReports, 'compareDatesDescending');
+                            ?>
+                        
+                    
                     <?php foreach ($groupedReports as $franchise => $monthlyReport): ?>
+                       
                         <tr onclick="toggleSubReports(this)" class="dropdown-row">
                             <td>
                             <div class="franchise-name" >
@@ -308,7 +327,7 @@ $this->Html->script('https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.3.2/ht
                            
                         </tr>
                         <?php if (isset($lowerReceiptReports[$franchise])): ?>
-                            <?php echo count($lowerReceiptReports[$franchise]); ?>
+                        
                             <?php foreach ($lowerReceiptReports[$franchise] as $subReport) : ?>
                         <tr class="sub-reports-row" style="display:none;" >
                             <!--<td colspan="5">-->

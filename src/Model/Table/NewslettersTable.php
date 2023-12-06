@@ -38,7 +38,7 @@ class NewslettersTable extends Table
     {
         parent::initialize($config);
 
-        
+        $this->addBehavior('Timestamp');
         // Define the Videos association
         $this->belongsTo('Newsletters');
         // Define the Operators association
@@ -51,7 +51,7 @@ class NewslettersTable extends Table
         $validator
             ->notEmptyString('title', __('Please enter a title.'))
             ->maxLength('title', 255, __('Title must be no more than 255 characters.'));
-
+        
         return $validator;
     }
 

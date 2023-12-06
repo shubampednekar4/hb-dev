@@ -20,7 +20,8 @@ class NewsController extends AppController
 {
     public function main()
     {
-        $newsletters = $this->News->Newsletters->find();
+        $newsletters = $this->News->Newsletters->find()
+        ->orderDesc('created');
 
         $this->set(compact('newsletters'));
     }
