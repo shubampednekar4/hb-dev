@@ -62,6 +62,7 @@ $this->assign('title', 'Manage All')
                     <td><?= $franchise->franchise_number_of_territories ? h($franchise->franchise_number_of_territories) : '<span class="badge badge-warning">Not Set</span>' ?></td>
                     <td class="actions">
                         <?= $this->Html->link('<i class="material-icons">visibility</i>', ['action' => 'view', $franchise->franchise_id], ['escapeTitle' => false, 'class' => 'btn btn-sm btn-primary btn-round btn-just-icon']) ?>
+                        <?= $this->Html->link('<i class="material-icons">edit</i>', ['action' => 'edit', $franchise->franchise_id], ['escapeTitle' => false, 'class' => 'btn btn-sm btn-warning btn-round btn-just-icon']) ?>
                         <?= $this->Form->postLink('<i class="material-icons">delete</i>', ['action' => 'delete', $franchise->franchise_id], ['confirm' => __('Are you sure you want to delete "{0}" franchise?', $franchise->franchise_name), 'escapeTitle' => false, 'class' => 'btn btn-sm btn-danger btn-round btn-just-icon']) ?>
                     </td>
                 </tr>
