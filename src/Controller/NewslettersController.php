@@ -130,7 +130,7 @@ class NewslettersController extends AppController
 
         if ($this->request->is(['patch', 'post', 'put'])) {
             $newsletter = $this->Newsletters->patchEntity($newsletter, $this->request->getData());
-            if ($this->Newsletters->save($video)) {
+            if ($this->Newsletters->save($newsletter)) {
                 
               $this->Flash->success(__('The Newsletter has been saved.'));
 
