@@ -289,6 +289,7 @@ class FranchisesController extends AppController
             $this->Flash->error(__('The franchise could not be saved. Please, try again.'));
         }
         $operators   = $this->Franchises->Operators->find('list', ['limit' => 200]);
+        $operators = $this->Operators->find();
         $stateOwners = $this->Franchises->StateOwners->find('list', ['limit' => 200]);
         $this->set(compact('franchise', 'operators', 'stateOwners'));
     }

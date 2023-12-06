@@ -13,10 +13,10 @@ use App\Model\Entity\User;
 use App\Model\Entity\Newsletter;
 use App\View\AppView;
 
-$this->assign('title', __('Edit Franchise "{0}"', $franchise->title));
+$this->assign('title', __('Edit Franchise "{0}"', $franchise->franchise_name));
 ?>
 
-<?= $this->Html->link('<i class="material-icons">visibility</i> ' . $franchise->title , ['action' => 'view', $franchise->franchise_id], [
+<?= $this->Html->link('<i class="material-icons">visibility</i> ' . $franchise->franchise_name , ['action' => 'view', $franchise->franchise_id], [
     'escape' => false,
     'class' => 'btn btn-sm btn-primary'
 ]) ?>
@@ -32,14 +32,17 @@ $this->assign('title', __('Edit Franchise "{0}"', $franchise->title));
         <div class="form-row">
             <div class="col-lg-6 col-md-12">
                 <div class="form-group">
-                    <?= $this->Form->control('title', [
-                        'class' => 'form-control',
-                        'label' => 'Title',
-                        'required',
-                    ]) ?>
+                <?= $this->Form->control('operator_id', [
+                    'class' => 'form-control select2',
+                    'label' => 'Operator Id',
+                    'options' => $operators,
+                    'empty' => '(choose one)',
+                ]); ?>
                 </div>
             </div>
-       
+            <div class="form-group col-md-4 col-sm-12" id="operator-state-parent">
+               
+            </div>            
         </div>
         <?= $this->Form->button(__('Submit'), ['class' => 'btn btn-success']) ?>
         <?= $this->Form->end() ?>
