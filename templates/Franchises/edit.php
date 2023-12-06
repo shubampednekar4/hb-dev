@@ -16,7 +16,7 @@ use App\View\AppView;
 $this->assign('title', __('Edit Franchise "{0}"', $franchise->title));
 ?>
 
-<?= $this->Html->link('<i class="material-icons">visibility</i> ' . $->title , ['action' => 'view', $franchise->franchise_id], [
+<?= $this->Html->link('<i class="material-icons">visibility</i> ' . $franchise->title , ['action' => 'view', $franchise->franchise_id], [
     'escape' => false,
     'class' => 'btn btn-sm btn-primary'
 ]) ?>
